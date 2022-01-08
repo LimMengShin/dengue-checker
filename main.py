@@ -39,3 +39,11 @@ for i in range(len(answers)):
 
 percentage = total / 120 * 100
 print("Chance of having dengue: {:0.2f}%".format(percentage))
+if percentage >= 80:
+    print("Very high chance of having dengue. Please visit a doctor now.")
+elif percentage >= 50:
+    print("High chance of having dengue. Please visit a doctor soon.")
+elif percentage >= 30:
+    print("Medium chance of having dengue. Please visit a doctor if symptoms persist.")
+else:
+    print("Low chance of having dengue.")
