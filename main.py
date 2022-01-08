@@ -17,3 +17,16 @@ questions = [
     "Have you felt more irritable or restless in the last 4 - 10 days?",
 ]
 weightages = [20, 15, 10, 10, 10, 10, 10, 5, 5, 5, 5, 5, 5, 5]
+answers = []
+
+for i in range(len(questions)):
+    print(f"{i + 1}. {questions[i]}")
+
+    while True:
+        answer = input("Enter answer [y/n]: ")
+        print()
+        if answer.lower() == "y" or answer.lower() == "n":
+            answers.append(answer)
+            break
+        else:
+            print("Your answer is invalid.\nRe-", end="")
