@@ -30,3 +30,12 @@ for i in range(len(questions)):
             break
         else:
             print("Your answer is invalid.\nRe-", end="")
+
+total = 0
+
+for i in range(len(answers)):
+    if answers[i] == "y":
+        total += weightages[i]
+
+percentage = total / 120 * 100
+print("Chance of having dengue: {:0.2f}%".format(percentage))
