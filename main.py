@@ -2,7 +2,7 @@ print("Disclaimer: This test cannot be used to substitute professional medical a
 
 questions = [
     "Have you been bitten by a mosquito in the last 4 - 10 days?",
-    "Did you experience high fever (above 40ºC) in the last 4 - 10 days?",
+    "Have you experienced high fever (above 40ºC) in the last 4 - 10 days?",
     "Have you experienced headaches in the last 4 - 10 days?",
     "Have you experienced muscle, bone or joint pains in the last 4 - 10 days",
     "Have you experienced nausea or vomiting in the last 4 - 10 days?",
