@@ -1,3 +1,5 @@
+import geocoder
+
 print("Disclaimer: This test cannot be used to substitute professional medical advice nor consulatation. Please seek medical help if you feel unwell.\n")
 
 questions = [
@@ -36,6 +38,8 @@ total = 0
 for i in range(len(answers)):
     if answers[i] == "y":
         total += weightages[i]
+
+g = geocoder.ip("me")
 
 percentage = total / 120 * 100
 print("Chance of having dengue: {:0.2f}%".format(percentage))
