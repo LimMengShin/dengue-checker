@@ -1,4 +1,10 @@
+import os
+
 import geocoder
+import requests
+from dotenv import load_dotenv
+
+load_dotenv()
 
 print("Disclaimer: This test cannot be used to substitute professional medical advice nor consulatation. Please seek medical help if you feel unwell.\n")
 
@@ -40,6 +46,18 @@ for i in range(len(answers)):
         total += weightages[i]
 
 g = geocoder.ip("me")
+lat = g.latlng[0]
+long = g.latlng[1]
+
+ONEMAP_API_TOKEN = os.getenv("ONEMAP_API_TOKEN")
+
+onemap_api_url = f"https://developers.onemap.sg/privateapi/commonsvc/revgeocode?location={lat},{long}&token={ONEMAP_API_TOKEN}"
+response = requests.get(onemap_api_url)
+
+try:
+    road_name = response.json().get("GeocodeInfo")[0].get("ROAD")
+except (TypeError, IndexError):
+    pass
 
 percentage = total / 120 * 100
 print("Chance of having dengue: {:0.2f}%".format(percentage))
