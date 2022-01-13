@@ -1,5 +1,4 @@
 import os
-
 import geocoder
 import requests
 from dotenv import load_dotenv
@@ -51,13 +50,17 @@ long = g.latlng[1]
 
 ONEMAP_API_TOKEN = os.getenv("ONEMAP_API_TOKEN")
 
-onemap_api_url = f"https://developers.onemap.sg/privateapi/commonsvc/revgeocode?location={lat},{long}&token={ONEMAP_API_TOKEN}"
+onemap_api_url = f"https://developers.onemap.sg/privateapi/themesvc/retrieveTheme?queryName=dengue_cluster&token={ONEMAP_API_TOKEN}"
 response = requests.get(onemap_api_url)
 
 try:
-    road_name = response.json().get("GeocodeInfo")[0].get("ROAD")
-except (TypeError, IndexError):
-    pass
+    dengue_dict = {}
+    results = response.json().get("SrchResults")[1:]
+    for i in range(len(results)):
+        cluster = results[i]
+        dengue_dict.update({i: {"location": cluster.get("DESCRIPTION"), "case_size": int(cluster.get("CASE_SIZE")), "alert_level": cluster.get("SYMBOLCOLOR"), "lat_lng": cluster.get("LatLng").split("|")}})
+except TypeError:
+    print("Unable to check for dengue clusters near you. Please check that your OneMap API Token is valid and replace it with a valid one if not.")
 
 percentage = total / 120 * 100
 print("Chance of having dengue: {:0.2f}%".format(percentage))
