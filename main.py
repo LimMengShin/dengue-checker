@@ -53,7 +53,16 @@ try:
     results = json.loads(response.json().replace("\\", "")).get("SrchResults")[1:]
     for i in range(len(results)):
         cluster = results[i]
-        dengue_dict.update({i: {"location": cluster.get("DESCRIPTION"), "case_size": int(cluster.get("CASE_SIZE")), "alert_level": cluster.get("SYMBOLCOLOR"), "lat_lng": cluster.get("LatLng").split("|")}})
+        dengue_dict.update(
+            {
+                i: {
+                    "location": cluster.get("DESCRIPTION"),
+                    "case_size": int(cluster.get("CASE_SIZE")),
+                    "alert_level": cluster.get("SYMBOLCOLOR"),
+                    "lat_lng": [[float(i) for i in x] for x in [i.split(",") for i in cluster.get("LatLng").split("|")]]
+                }
+            }
+        )
 except:
     print("Unable to check for dengue clusters near you.")
 
