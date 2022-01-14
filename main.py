@@ -41,14 +41,14 @@ for i in range(len(answers)):
     if answers[i] == "y":
         total += weightages[i]
 
-g = geocoder.ip("me")
-lat = g.latlng[0]
-long = g.latlng[1]
-
-nea_api_url = "https://www.nea.gov.sg/api/OneMap/GetMapData/DENGUE_CLUSTER"
-response = requests.get(nea_api_url)
-
 try:
+    g = geocoder.ip("me")
+    lat = g.latlng[0]
+    long = g.latlng[1]
+
+    nea_api_url = "https://www.nea.gov.sg/api/OneMap/GetMapData/DENGUE_CLUSTER"
+    response = requests.get(nea_api_url)
+
     dengue_dict = {}
     results = json.loads(response.json().replace("\\", "")).get("SrchResults")[1:]
     for i in range(len(results)):
@@ -63,8 +63,8 @@ try:
                 }
             }
         )
-except:
-    print("Unable to check for dengue clusters near you.")
+except TypeError:
+    print("Unable to check for dengue clusters near you. Check your internet connection and try again.")
 
 percentage = total / 120 * 100
 print("Chance of having dengue: {:0.2f}%".format(percentage))
