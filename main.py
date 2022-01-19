@@ -71,9 +71,9 @@ try:
                 break
 
     clusters_list_length = len(clusters_list)
-    if len(clusters_list) == 0:
+    if clusters_list_length == 0:
         print("You are not near any dengue clusters.")
-    elif len(clusters_list) == 1:
+    elif clusters_list_length == 1:
         print(f"You are near 1 dengue cluster:\n{clusters_list[0][0]} | {clusters_list[0][1]} dengue cases")
     else:
         print(f"You are near {clusters_list_length} dengue clusters:")
