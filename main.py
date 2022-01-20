@@ -63,7 +63,7 @@ try:
             }
         )
 
-    clusters_list = [] #initialise empty list to 
+    clusters_list = [] #initialise empty list to store cluster info
     for cluster in dengue_dict.values():
         for i in cluster.get("lat_lng"):
             if haversine(lat_lng, i) < 0.2: #if distance between latitude and longitude of cluster and user is < 200m (uses haversine formula)
