@@ -42,6 +42,8 @@ for i in range(len(answers)):
     if answers[i] == "y":
         total += weightages[i] #adding of weightages to total if they answered yes
 
+percentage = total / 120 * 100
+
 try:
     g = geocoder.ip("me") #finding latitude and longitude of user from module --> geocoder
     lat_lng = g.latlng
@@ -63,7 +65,7 @@ try:
             }
         )
 
-    clusters_list = [] #initialise empty list to 
+    clusters_list = [] #initialise empty list to
     for cluster in dengue_dict.values():
         for i in cluster.get("lat_lng"):
             if haversine(lat_lng, i) < 0.2: #if distance between latitude and longitude of cluster and user is < 200m (uses haversine formula)
@@ -71,18 +73,21 @@ try:
                 break
 
     clusters_list_length = len(clusters_list) #check number of clusters that is within 200m radius of user
-    if clusters_list_length == 0: #Output 
+    if clusters_list_length == 0: #Output
         print("You are not near any dengue clusters.")
     elif clusters_list_length == 1:
+        if percentage <= 97:
+            percentage += 3
         print(f"You are near 1 dengue cluster:\n{clusters_list[0][0]} | {clusters_list[0][1]} dengue cases")
     else:
+        if percentage <= 95:
+            percentage += 5
         print(f"You are near {clusters_list_length} dengue clusters:")
         for i in range(clusters_list_length):
             print(f"{i+1}. {clusters_list[i][0]} | {clusters_list[i][1]} dengue cases")
 except TypeError:
     print("Unable to check for dengue clusters near you. Check your internet connection and try again.")
 
-percentage = total / 120 * 100
 print("\nChance of having dengue: {:0.2f}%".format(percentage))
 if percentage >= 80:
     print("Very high chance of having dengue. Please visit a doctor now.")
