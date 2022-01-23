@@ -39,7 +39,7 @@ for question, weightage in questions.items():
         else:
             print("Your answer is invalid.\nRe-", end="") #Error message
 
-percentage = total / 120 * 100
+percentage = total / sum(questions.values()) * 100
 
 try:
     g = geocoder.ip("me") #finding latitude and longitude of user from module --> geocoder
