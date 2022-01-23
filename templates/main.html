@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dengue Checker</title>
+</head>
+<body>
+    <h1>Dengue Checker</h1>
+    <h3>Disclaimer: This test cannot be used to substitute professional medical advice nor consultation. Please seek medical help if you feel unwell.</h3>
+    <form action='/results' method='POST'>
+        <ol>
+            {% for i in q %}
+                <li>{{i}}</li>
+                {% for j in ["Yes", "No"] %}
+                    <input type='radio' value='{{j}}' name='{{i}}' />{{j}}
+                {% endfor %}
+            {% endfor %}
+        </ol>
+        <input type="submit" value="Submit" />
+    </form>
+</body>
+</html>
