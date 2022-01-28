@@ -74,12 +74,14 @@ def results():
         if clusters_list_length == 0:
             final += "<h2>You are not near any dengue clusters.</h2>"
         elif clusters_list_length == 1:
-            if percentage <= 97:
-                percentage += 3
+            percentage += 3
+            if percentage > 100:
+                percentage = 100
             final += f"<h2>You are near 1 dengue cluster:</h2><h2>{clusters_list[0][0]} | {clusters_list[0][1]} dengue cases</h2>"
         else:
-            if percentage <= 95:
-                percentage += 5
+            percentage += 5
+            if percentage > 100:
+                percentage = 100
             final += f"<h2>You are near {clusters_list_length} dengue clusters:</h2>"
             for i in range(clusters_list_length):
                 final += f"<h2>{i+1}. {clusters_list[i][0]} | {clusters_list[i][1]} dengue cases</h2>"
