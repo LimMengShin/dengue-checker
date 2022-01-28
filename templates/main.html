@@ -3,16 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Dengue Checker</title>
+    <script>
+    function validateForm() {
+        for (let i = 1; i < 15; i++) {
+            if ((!(document.getElementById(""+i+"1").checked)) && (!(document.getElementById(""+i+"2").checked))) {
+                alert("Please ensure that all the questions are answered.")
+                return false
+            }
+        }
+    }
+    </script>
 </head>
 <body>
     <h1>Dengue Checker</h1>
     <h3>Disclaimer: This test cannot be used to substitute professional medical advice nor consultation. Please seek medical help if you feel unwell.</h3>
-    <form action='/results' method='POST'>
+    <form name="dengue_form" action='/results' onsubmit="return validateForm()" method='POST'>
         <ol>
             {% for i in q %}
+                {% set outer_loop = loop %}
                 <li>{{i}}</li>
                 {% for j in ["Yes", "No"] %}
-                    <input type='radio' value='{{j}}' name='{{i}}' />{{j}}
+                    <input type='radio' value='{{j}}' name='{{i}}' id='{{outer_loop.index}}{{loop.index}}' />{{j}}
                 {% endfor %}
             {% endfor %}
         </ol>
