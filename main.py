@@ -42,6 +42,8 @@ def results():
 
     percentage = total / sum(questions.values()) * 100
 
+    clusters_html = ""
+
     try:
         g = geocoder.ip("me") #finding latitude and longitude of user from module --> geocoder
         lat_lng = g.latlng
@@ -72,13 +74,13 @@ def results():
 
         clusters_list_length = len(clusters_list) #check number of clusters that is within 200m radius of user
         if clusters_list_length == 0:
-            final += "<h3>You are not near any dengue clusters.</h3>"
+            clusters_html += "<h3 class='center' >No dengue clusters nearby.</h3>"
         else:
-            final += f"<h3>You are near {clusters_list_length} dengue cluster(s):</h3>"
-            final += "<ol>"
+            clusters_html += f"<h3>{clusters_list_length} dengue cluster(s) nearby:</h3>"
+            clusters_html += "<ol>"
             for i in range(clusters_list_length):
-                final += f"<li>{clusters_list[i][0]} | {clusters_list[i][1]} dengue cases</li>"
-            final += "</ol>"
+                clusters_html += f"<li>{clusters_list[i][0]} | {clusters_list[i][1]} dengue cases</li>"
+            clusters_html += "</ol>"
 
         if clusters_list_length == 1:
             percentage += 3
@@ -88,19 +90,51 @@ def results():
         if percentage > 100:
             percentage = 100
     except requests.ConnectionError:
-        final += "<h3>Unable to check for dengue clusters near you. Check your internet connection and try again.</h3>"
+        clusters_html += "<h3 class='center' >Unable to check for dengue clusters near you. Check your internet connection and try again.</h3>"
 
-    final += "<h2>Chance of having dengue: {:0.2f}%</h2>".format(percentage)
+    final += "<h2 class='center' >Chance of having dengue: <u>{:0.2f}%</u></h2>".format(percentage)
     if percentage >= 80:
-        final += "<h2>Very high chance of having dengue. Please visit a doctor now.</h2>"
+        final += "<h2 class='center' >Very high chance of having dengue. Please visit a doctor now.</h2>"
     elif percentage >= 50:
-        final += "<h2>High chance of having dengue. Please visit a doctor soon.</h2>"
+        final += "<h2 class='center' >High chance of having dengue. Please visit a doctor soon.</h2>"
     elif percentage >= 30:
-        final += "<h2>Medium chance of having dengue. Please visit a doctor if symptoms persist.</h2>"
+        final += "<h2 class='center' >Medium chance of having dengue. Please visit a doctor if symptoms persist.</h2>"
     else:
-        final += "<h2>Low chance of having dengue.</h2>"
+        final += "<h2 class='center' >Low chance of having dengue.</h2>"
 
-    final = "<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><title>Results</title></head><body>" + final + "</body></html>"
+    final = """
+    <!DOCTYPE html>
+    <html lang='en'>
+    <head>
+    <meta charset='UTF-8'>
+    <title>Results</title>
+    <style>
+    .center {
+        text-align: center
+    }
+    ol {
+        list-style: none;
+        counter-reset: counter;
+    }
+    li {
+        counter-increment: counter;
+        margin: 0.5rem;
+    }
+    li::before {
+        content: counter(counter);
+        background: #8b0000;
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 20%;
+        display: inline-block;
+        line-height: 1.5rem;
+        color: white;
+        text-align: center;
+        margin-right: 0.5rem;
+    }
+    </style>
+    </head>
+    <body>""" + final + "<hr>" + clusters_html + "</body></html>"
     return final
 
 
