@@ -72,21 +72,23 @@ def results():
 
         clusters_list_length = len(clusters_list) #check number of clusters that is within 200m radius of user
         if clusters_list_length == 0:
-            final += "<h2>You are not near any dengue clusters.</h2>"
-        elif clusters_list_length == 1:
+            final += "<h3>You are not near any dengue clusters.</h3>"
+        else:
+            final += f"<h3>You are near {clusters_list_length} dengue cluster(s):</h3>"
+            final += "<ol>"
+            for i in range(clusters_list_length):
+                final += f"<li>{clusters_list[i][0]} | {clusters_list[i][1]} dengue cases</li>"
+            final += "</ol>"
+
+        if clusters_list_length == 1:
             percentage += 3
-            if percentage > 100:
-                percentage = 100
-            final += f"<h2>You are near 1 dengue cluster:</h2><h2>{clusters_list[0][0]} | {clusters_list[0][1]} dengue cases</h2>"
         else:
             percentage += 5
-            if percentage > 100:
-                percentage = 100
-            final += f"<h2>You are near {clusters_list_length} dengue clusters:</h2>"
-            for i in range(clusters_list_length):
-                final += f"<h2>{i+1}. {clusters_list[i][0]} | {clusters_list[i][1]} dengue cases</h2>"
+
+        if percentage > 100:
+            percentage = 100
     except requests.ConnectionError:
-        final += "<h2>Unable to check for dengue clusters near you. Check your internet connection and try again.</h2>"
+        final += "<h3>Unable to check for dengue clusters near you. Check your internet connection and try again.</h3>"
 
     final += "<h2>Chance of having dengue: {:0.2f}%</h2>".format(percentage)
     if percentage >= 80:
