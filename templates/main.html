@@ -17,6 +17,11 @@
                 return false
             }
         }
+        if (!window.navigator.onLine) {
+            if (!confirm("No internet connection. Without internet connection, we are unable to check for dengue clusters near you.\n\nAre you sure you want to proceed?")) {
+                return false
+            }
+        }
     }
     </script>
 </head>
