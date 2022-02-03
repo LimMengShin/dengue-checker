@@ -134,7 +134,7 @@ def results():
     }
     </style>
     </head>
-    <body>""" + final + "<hr>" + clusters_html + "</body></html>"
+    <body>""" + final + "<hr>" + clusters_html + "<button onclick='history.back()'>Go Back</button></body></html>"
     return final
 
 
