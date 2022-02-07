@@ -111,33 +111,36 @@ def results():
     <!DOCTYPE html>
     <html lang='en'>
     <head>
-    <meta charset='UTF-8'>
-    <title>Results</title>
-    <style>
-    .center {
-        text-align: center
-    }
-    ol {
-        list-style: none;
-        counter-reset: counter;
-    }
-    li {
-        counter-increment: counter;
-        margin: 0.5rem;
-    }
-    li::before {
-        content: counter(counter);
-        background: #8b0000;
-        width: 1.5rem;
-        height: 1.5rem;
-        border-radius: 20%;
-        display: inline-block;
-        line-height: 1.5rem;
-        color: white;
-        text-align: center;
-        margin-right: 0.5rem;
-    }
-    </style>
+        <meta charset='UTF-8'>
+        <title>Results</title>
+        <style>
+            body {
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            } 
+            .center {
+                text-align: center
+            }
+            ol {
+                list-style: none;
+                counter-reset: counter;
+            }
+            li {
+                counter-increment: counter;
+                margin: 0.5rem;
+            }
+            li::before {
+                content: counter(counter);
+                background: #8b0000;
+                width: 1.5rem;
+                height: 1.5rem;
+                border-radius: 20%;
+                display: inline-block;
+                line-height: 1.5rem;
+                color: white;
+                text-align: center;
+                margin-right: 0.5rem;
+            }
+        </style>
     </head>
     <body>""" + final + "<hr>" + clusters_html + "<button onclick='history.back()'>Go Back</button></body></html>"
     return final
