@@ -8,6 +8,11 @@
         margin-top: 0.5rem;
         margin-bottom: 0.1rem;
     }
+    a.help {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
     </style>
     <script>
     function validateForm() {
@@ -40,5 +45,6 @@
         </ol>
         <input type="submit" value="Submit" />
     </form>
+    <a class="help" href="{{ url_for('help_page') }}">Help</a>
 </body>
 </html>

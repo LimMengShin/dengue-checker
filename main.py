@@ -29,6 +29,11 @@ def dengue_checker():
     return render_template("main.html", q=questions.keys())
 
 
+@app.route("/help")
+def help_page():
+    return render_template("help.html")
+
+
 @app.route("/results", methods=["POST"])
 def results():
     final = ""
