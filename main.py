@@ -27,7 +27,7 @@ questions = {
 
 #Show website design from main.html for main page & shows questions
 @app.route("/")
-def dengue_checker():
+def main_page():
     return render_template("main.html", q=questions.keys())
 
 #Show website design from help.html for help page
@@ -37,7 +37,7 @@ def help_page():
 
 
 @app.route("/results", methods=["POST"]) #Retrieves data submitted by user on main page
-def results():
+def results_page():
     final = "" #Initialise html which will be shown on results page
 
     total = 0 #Initialising total points of user based on their answers and their question weightages
