@@ -89,13 +89,13 @@ def results():
                 clusters_html += f"<li>{clusters_list[i][0]} | {clusters_list[i][1]} dengue cases</li>"
             clusters_html += "</ol>"
 
-        if clusters_list_length == 1: #Adds percentage likelihood of having dengue based on no. of nearby cluster
-            percentage += 3
-        else:
-            percentage += 5
+            if clusters_list_length == 1: #Adds percentage likelihood of having dengue based on no. of nearby cluster
+                percentage += 3
+            else:
+                percentage += 5
 
-        if percentage > 100: #ensures that % will not exceed 100% due to nearby clusters
-            percentage = 100
+            if percentage > 100: #ensures that % will not exceed 100% due to nearby clusters
+                percentage = 100
     except requests.ConnectionError: #If no connection, changes cluster msg
         clusters_html += "<h3 class='center' >Unable to check for dengue clusters near you. Check your internet connection and try again.</h3>"
 
