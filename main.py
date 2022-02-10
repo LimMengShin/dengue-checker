@@ -129,8 +129,12 @@ def results_page():
         clusters_list = check_nearby_clusters(dengue_dict, lat_lng)
 
         clusters_html, percentage = location_results(clusters_list, clusters_html, percentage)
+
     except requests.ConnectionError: #If no connection, changes cluster msg
         clusters_html += "<h3 class='center' >Unable to check for dengue clusters near you. Check your internet connection and try again.</h3>"
+
+    except TypeError:
+        clusters_html += "<h3 class='center' >Unable to check for dengue clusters near you. There may be an error with your internet connection.<br>Try using a different internet connection.</h3>"
 
     final = final_results(final, percentage)
 
