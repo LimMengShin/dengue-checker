@@ -11,6 +11,7 @@
 </head>
 <body>
     <h1>Help</h1>
+
     <h2>How to use this dengue checker</h2>
     <p>For each of the 14 questions, answer "Yes" or "No" by clicking on the radio button.</p>
     <p>After answering all the questions, click on the "Submit" button to submit your answers.</p>
@@ -18,11 +19,13 @@
     <p>If there is no internet connection when the "Submit" button is clicked, the website will prompt an alert, asking you if you still want to submit.<br>If you click on the "OK" button, the answers will be submitted. However, the dengue checker will be unable to check for dengue clusters near you.<br>If you click on the "Cancel" button, the answers will not be submitted and the alert will disappear.</p>
     <p>After submitting, you will be redirected to the "Results" page.</p>
     <p>This "Results" page will display the chance of you having dengue and advice on what to do. It will also display the dengue clusters nearby, if any.</p>
+
     <h2>How this dengue checker works</h2>
-    <p>First, it calculates the percentage from your answers you input.<br>Each question has a different weightage and the it is divided by the total questions to get a percentage.</p>
-    <p>Then we get your longditude and latitude of your device and check it with the longditute and latitude of dengue clusters from the NEA website.<br>The weightage of this would depend on how many clusters your device is near to and add to the percentage</p>
-    <p>However, if your percentage after adding the value is above 100% it will not be added in.</p>
-    
+    <p>Firstly, based on the answers you input, the website calculates your chance of having dengue. Each question has a different weightage and will affect your chance of having dengue accordingly.</p>
+    <p>Afterwards, the website gets the current location of your device. It will also retrieve the latest dengue clusters using an Application Programming Interface (API) from National Environment Agency (NEA).</p>
+    <p>The website will then check for the distance between the dengue clusters and your location. If one of the dengue clusters is less than 200 metres from your location, it is considered that you are near a dengue cluster.</p>
+    <p>Depending on how many dengue clusters are near you, your chance of having dengue will be increased accordingly.</p>
+
     <button onclick='history.back()'>Go Back</button>
 </body>
 </html>
