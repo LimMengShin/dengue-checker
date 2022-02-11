@@ -3,6 +3,8 @@
 Damegue is a dengue checker website which determines your chances of having dengue, based on your answers to the questions.
 In addition, it checks for dengue clusters near you (available only in Singapore).
 
+This program is developed by [Meng Shin](https://github.com/LimMengShin), [Ping Jin](https://github.com/minholly1993) and [Ysabelle Wong](https://github.com/ysabelle2006) for our 2022 Secondary 4 Computing+ Coursework.
+
 ### Demo
 
 ![Demo](img/demo.gif)
