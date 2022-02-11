@@ -29,4 +29,4 @@ Run the programme in your preferred IDE.
 
 Afterwards, navigate to `http://127.0.0.1:5000/` on your web browser to access the website.
 
-To quit the program, press `CTRL + C` on Terminal.
+To quit the program, press `CTRL + C` on the command line.
