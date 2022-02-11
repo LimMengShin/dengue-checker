@@ -3,8 +3,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <!-- Page title -->
     <title>Help</title>
+
+    <!-- CSS -->
     <style>
+        /* Specify font for body */
         body {
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         }
@@ -13,6 +18,7 @@
 <body>
     <h1>Help</h1>
 
+    <!-- Guide on how to use this dengue checker -->
     <h2>How to use this dengue checker</h2>
     <p>For each of the 14 questions, answer "Yes" or "No" by clicking on the radio button.</p>
     <p>After answering all the questions, click on the "Submit" button to submit your answers.</p>
@@ -21,15 +27,18 @@
     <p>After submitting, you will be redirected to the "Results" page.</p>
     <p>This "Results" page will display the chance of you having dengue and advice on what to do, if applicable. It will also display the dengue clusters nearby, if any.</p>
 
+    <!-- Guide on how this dengue check works -->
     <h2>How this dengue checker works</h2>
     <p>Firstly, based on the answers you input, the website calculates your chance of having dengue. Each question has a different weightage and will affect your chance of having dengue accordingly.</p>
     <p>Afterwards, the website gets the current location of your device. It will also retrieve the latest dengue clusters using an Application Programming Interface (API) from National Environment Agency (NEA).</p>
     <p>The website will then check for the distance between the dengue clusters and your location. If one of the dengue clusters is less than 200 metres from your location, it is considered that you are near a dengue cluster.</p>
     <p>Depending on how many dengue clusters are near you, your chance of having dengue will be increased accordingly.</p>
 
+    <!-- Disclaimer -->
     <h2>Disclaimer</h2>
     <p>This dengue checker is for educational purposes only. This dengue checker is not a substitute for professional medical advice or consultation. Do seek medical help if you feel unwell.</p>
 
+    <!-- Back button -->
     <button onclick='history.back()'>Go Back</button>
 </body>
 </html>
