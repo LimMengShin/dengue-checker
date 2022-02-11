@@ -16,6 +16,7 @@ NEA_API_URL = "https://www.nea.gov.sg/api/OneMap/GetMapData/DENGUE_CLUSTER"
 app = Flask(__name__)
 
 
+# Coded by Meng Shin, Ping Jin, Ysabelle
 # Calculate chance of user having dengue based on user's input in percentage
 def calculate_percentage():
     total = 0  # Initialise total points of user based on their answers and the question weightages
@@ -29,6 +30,7 @@ def calculate_percentage():
     return percentage
 
 
+# Coded by Meng Shin
 # Get location (latitude, longitude) of user using the Geocoder module
 def get_location():
     g = geocoder.ip("me")
@@ -36,12 +38,14 @@ def get_location():
     return lat_lng
 
 
+# Coded by Meng Shin
 # Make a "GET" request to the NEA API
 def get_data(url):
     response = requests.get(url)
     return response
 
 
+# Coded by Meng Shin
 # Format response and store formatted response in a dictionary
 def format_data(response):
     dengue_dict = {}  # Initialise empty dictionary to store formatted response
@@ -62,6 +66,7 @@ def format_data(response):
     return dengue_dict
 
 
+# Coded by Meng Shin
 # Check for nearby clusters (less than 200 metres from user) and store them in a list
 def check_nearby_clusters(dengue_dict, lat_lng):
     clusters_list = []  # Initialise empty list to store cluster info
@@ -75,6 +80,7 @@ def check_nearby_clusters(dengue_dict, lat_lng):
     return clusters_list
 
 
+# Coded by Meng Shin
 # Add HTML of dengue cluster(s) nearby, if any, to "clusters_html" string,
 # and increase percentage depending on number of nearby clusters
 def location_results(clusters_list, clusters_html, percentage):
@@ -102,6 +108,7 @@ def location_results(clusters_list, clusters_html, percentage):
     return clusters_html, percentage
 
 
+# Coded by Meng Shin, Ping Jin, Ysabelle
 # Add HTML of chance of having dengue percentage and advice on what to do, if applicable, to "final" string
 def final_results(final, percentage):
     final += "<h2 class='center' >Chance of having dengue: <u>{:0.2f}%</u></h2>".format(percentage)  # Output percentage
@@ -118,18 +125,21 @@ def final_results(final, percentage):
     return final
 
 
+# Coded by Meng Shin
 # Render page template from main.html
 @app.route("/")
 def main_page():
     return render_template("main.html", q=questions.keys())
 
 
+# Coded by Meng Shin
 # Render page template from help.html
 @app.route("/help")
 def help_page():
     return render_template("help.html")
 
 
+# Coded by Meng Shin
 # Display results page and returns results HTML
 @app.route("/results", methods=["POST"])
 def results_page():

@@ -1,3 +1,4 @@
+# Coded by Meng Shin, Ping Jin, Ysabelle
 # Questions (with weightages) to ask user
 questions = {
     "Have you been bitten by a mosquito in the last 4 - 10 days?": 20,
