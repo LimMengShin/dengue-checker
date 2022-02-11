@@ -19,7 +19,7 @@ Next, also on the command line, install dependencies by running:
 pip install -r requirements.txt
 ```
 
-## Usage:
+## Usage
 
 Run the programme in your preferred IDE.
 
