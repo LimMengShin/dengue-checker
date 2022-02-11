@@ -3,29 +3,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <!-- Page title -->
     <title>Dengue Checker</title>
+
+    <!-- CSS -->
     <style>
+        /* Specify font for body */
         body {
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         }
+
+        /* Add space between each question */
         li {
             margin-top: 0.5rem;
             margin-bottom: 0.1rem;
         }
+
+        /* Set position of "Help" link */
         a.help {
             position: absolute;
             top: 20px;
             right: 20px;
         }
     </style>
+
+    <!-- JavaScript -->
     <script>
     function validateForm() {
+        // Display an alert if not all the questions are answered
         for (let i = 1; i < 15; i++) {
             if ((!(document.getElementById(""+i+"1").checked)) && (!(document.getElementById(""+i+"2").checked))) {
                 alert("Please ensure that all the questions are answered.")
                 return false
             }
         }
+
+        // Display a confirmation box if there is no internet connection
         if (!window.navigator.onLine) {
             if (!confirm("No internet connection. Without internet connection, we are unable to check for dengue clusters near you.\n\nAre you sure you want to proceed?")) {
                 return false
@@ -36,6 +50,12 @@
 </head>
 <body>
     <h1>Dengue Checker</h1>
+
+    <!--
+    Dengue checker form
+    Display questions with "Yes" and "No" radio buttons
+    Return validateForm() function after submitting form
+    -->
     <form name="dengue_form" action='/results' onsubmit="return validateForm()" method='POST'>
         <ol>
             {% for i in q %}
@@ -48,6 +68,8 @@
         </ol>
         <input type="submit" value="Submit" />
     </form>
+
+    <!-- Add anchor element to link to help page -->
     <a class="help" href="{{ url_for('help_page') }}">Help</a>
 </body>
 </html>
