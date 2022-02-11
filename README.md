@@ -13,6 +13,8 @@ Begin by cloning this git repo and navigating to the project directory on the co
 
 > Refer to [this](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) guide on how to clone a git repository on GitHub.
 
+Ensure that [Python](https://www.python.org/downloads/) and [PIP](https://pip.pypa.io/en/stable/installation/) are installed in your system.
+
 Next, also on the command line, install dependencies by running:
 
 ```
