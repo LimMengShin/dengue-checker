@@ -183,4 +183,4 @@ def results_page():
 
 
 if __name__ == "__main__": #Run the programme
-    app.run(debug=True)
+    app.run()
