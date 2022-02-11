@@ -1,7 +1,7 @@
 # Damegue - dengue checker
 
-Damegue is a dengue checker website. It will determine your chances of having dengue, based on your answers to the questions.
-It will also check for dengue clusters near you. (Only in Singapore)
+Damegue is a dengue checker website which determines your chances of having dengue, based on your answers to the questions.
+In addition, it checks for dengue clusters near you (available only in Singapore).
 
 ### Demo
 
